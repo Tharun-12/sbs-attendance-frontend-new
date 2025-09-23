@@ -1,0 +1,139 @@
+/* Wrapper Background */
+.userlogin-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d0d25, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Login Box */
+.userlogin-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Logo */
+.userlogin-logo {
+  width: 180px;
+  height: 120px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* Title */
+.userlogin-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #f7e896;
+  margin-bottom: 15px;
+}
+
+/* Error Message */
+.userlogin-error {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Input Fields */
+.userlogin-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 14px;
+}
+
+.userlogin-input::placeholder {
+  color: #ccc;
+}
+
+/* Password Toggle */
+.userlogin-password-field {
+  position: relative;
+}
+
+.userlogin-toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 35%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #f7e896;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Remember Me */
+.userlogin-remember-me {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 15px;
+  gap: 5px;
+}
+
+/* Button */
+.userlogin-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #f1e57c, #e6ce45);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+.userlogin-btn:hover {
+  background: linear-gradient(135deg, #ffe85c, #f0d53e);
+}
+
+/* Links */
+.userlogin-links {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.userlogin-links a {
+  color: rgb(250, 225, 85);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.userlogin-links a:hover {
+  text-decoration: underline;
+}
+
+.userlogin-policy-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.userlogin-policy-links a {
+  color: #ccc;
+  font-size: 12px;
+  text-decoration: underline;
+}

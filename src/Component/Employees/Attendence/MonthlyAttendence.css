@@ -1,0 +1,140 @@
+.employee-MonthlyAttendence {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  
+  /* Content Area */
+  .employee-MonthlyAttendence1 {
+    flex: 1;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 220px;
+    /* transition: margin-left 0.3s ease; */
+  
+    width: calc(90% - 50px);
+    transition: margin-left 0.3s ease, width 0.3s ease;
+  }
+  
+  .employee-MonthlyAttendence1.collapsed {
+    margin-left: 60px;
+    /* Adjust based on sidebar width */
+    /* margin-left: 50px; */
+  
+    width: calc(100% - 70px);
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .employee-MonthlyAttendence1 {
+      margin-left: 220px;
+    }
+  
+    .employee-MonthlyAttendence1.collapsed {
+      margin-left: 60px;
+      /* margin-left: 50px; */
+      width: calc(100% - 70px);
+      margin-top: 65px;
+    }
+  
+    .employee-MonthlyAttendence1 {
+      flex: 1 1;
+      padding: 20px;
+      margin-top: 65px;
+      margin-left: 196px;
+      /* transition: margin-left 0.3s ease; */
+      width: calc(82% - 50px);
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
+  }
+  
+  
+  /* For mobile devices */
+  @media (max-width: 767px) {
+    .employee-MonthlyAttendence {
+      padding: 10px;
+    }
+  
+    .employee-MonthlyAttendence1 {
+      padding: 10px;
+      margin-top: 65px;
+      margin-left: 10px;
+    }
+  
+    .employee-MonthlyAttendence1 {
+      flex: 1 1;
+      padding: 20px;
+      margin-top: 70px;
+      margin-left: 0px;
+      /* transition: margin-left 0.3s ease; */
+      width: calc(115% - 50px);
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
+  
+    .employee-MonthlyAttendence1.collapsed {
+      margin-left: 29px;
+      width: calc(113% - 70px);
+    }
+  
+    .export-button {
+      padding: 4px;
+      margin-left: 5px;
+    }
+  
+  }
+
+
+  .attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  min-width: 40px;
+}
+
+.attendance-table thead {
+  background: #007bff;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.attendance-table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.attendance-table tbody tr:hover {
+  background: #f1f7ff;
+  transition: 0.2s ease-in-out;
+}
+
+.present {
+  color: green;
+  font-weight: bold;
+}
+
+.absent {
+  color: red;
+  font-weight: bold;
+}
+
+.present-count {
+  font-weight: bold;
+  background: #e6f7e6;
+  color: #2e7d32;
+}
+
+.employee-MonthlyAttendence1_tabs{
+  margin-top: 20%;
+}
