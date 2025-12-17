@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ReusableTable from "../../../Layout/ReusableTable";
 import Navbar from "../../../Shared/AdminSidebar/AdminSidebar";
 import '../../../Layout/Collapse/Collapse.css';
-import {FaEdit,FaTrash} from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { baseUrl } from "../../../../Apiurls";
 
 const EmployeeDetails = () => {
@@ -28,20 +28,19 @@ const EmployeeDetails = () => {
       const data = await response.json();
       
       if (data.success) {
-        // Map the database fields to match your table structure
         const mappedEmployees = data.data.map(employee => ({
-  id: employee.id,
-  name: employee.name,
-  email: employee.email,
-  mobile: employee.contactNo, // 👈 updated
-  role: employee.department,
-  address: `${employee.city || ''}, ${employee.state || ''}`.replace(/^,\s*/, '').replace(/,\s*$/, '') || employee.location,
-  department: employee.department,
-  designation: employee.educationQualification, // 👈 updated
-  experience: employee.experience,
-  status: employee.status,
-  created_at: employee.createdAt // 👈 updated
-}));
+          id: employee.id,
+          name: employee.name,
+          email: employee.email,
+          mobile: employee.contactNo,
+          role: employee.department,
+          address: `${employee.city || ''}, ${employee.state || ''}`.replace(/^,\s*/, '').replace(/,\s*$/, '') || employee.location,
+          department: employee.department,
+          designation: employee.educationQualification,
+          experience: employee.experience,
+          status: employee.status,
+          created_at: employee.createdAt
+        }));
 
         setEmployees(mappedEmployees);
       } else {
@@ -55,6 +54,11 @@ const EmployeeDetails = () => {
     }
   };
 
+  const handleEditEmployee = (employeeId) => {
+    // Navigate to registration form with edit mode
+    navigate(`/employeeregister?edit=${employeeId}`);
+  };
+
   const handleDeleteEmployee = async (employeeId) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       try {
@@ -64,7 +68,6 @@ const EmployeeDetails = () => {
         const data = await response.json();
         
         if (data.success) {
-          // Remove the deleted employee from the local state
           setEmployees(employees.filter(emp => emp.id !== employeeId));
           alert("Employee deleted successfully!");
         } else {
@@ -89,7 +92,6 @@ const EmployeeDetails = () => {
       const data = await response.json();
       
       if (data.success) {
-        // Update the employee status in local state
         setEmployees(employees.map(emp => 
           emp.id === employeeId ? { ...emp, status: newStatus } : emp
         ));
@@ -108,102 +110,77 @@ const EmployeeDetails = () => {
     {
       key: "sno",
       title: "S.No",
-      render: (row, index) => index + 1, // Auto serial number
+      render: (row, index) => index + 1,
     },
     { key: "name", title: "Name" },
     { key: "email", title: "Email" },
     { key: "mobile", title: "Mobile" },
-    { key: "role", title: "Department" },
+    { key: "department", title: "Department" },
     { key: "address", title: "Address" },
-    // { 
-    //   key: "status", 
-    //   title: "Status",
-    //   render: (row) => (
-    //     <span 
-    //       className={`badge ${
-    //         row.status === 'active' ? 'bg-success' : 
-    //         row.status === 'inactive' ? 'bg-warning' : 'bg-danger'
-    //       }`}
-    //       style={{ 
-    //         padding: '5px 10px', 
-    //         borderRadius: '12px',
-    //         fontSize: '11px',
-    //         textTransform: 'capitalize'
-    //       }}
-    //     >
-    //       {row.status}
-    //     </span>
-    //   )
-    // },
-    // {
-    //   key: "actions",
-    //   title: "Actions",
-    //   render: (row) => (
-    //     <div style={{ display: 'flex', gap: '5px' }}>
-    //       <button
-    //         onClick={() => navigate(`/employee/edit/${row.id}`)}
-    //         style={{
-    //           backgroundColor: "blue",
-    //           color: "#fff",
-    //           border: "none",
-    //           padding: "4px 8px",
-    //           borderRadius: "4px",
-    //           cursor: "pointer",
-    //           fontSize: "12px",
-    //         }}
-    //         title="Edit Employee"
-    //       >
-    //         <FaEdit />
-    //       </button>
-    //       {/* <button
-    //         onClick={() => navigate(`/employee/view/${row.id}`)}
-    //         style={{
-    //           backgroundColor: "#17a2b8",
-    //           color: "#fff",
-    //           border: "none",
-    //           padding: "4px 8px",
-    //           borderRadius: "4px",
-    //           cursor: "pointer",
-    //           fontSize: "12px",
-    //         }}
-    //         title="View Employee"
-    //       >
-    //         View
-    //       </button> */}
-    //       {/* <select
-    //         value={row.status}
-    //         onChange={(e) => handleUpdateStatus(row.id, e.target.value)}
-    //         style={{
-    //           padding: "2px 4px",
-    //           borderRadius: "4px",
-    //           border: "1px solid #ddd",
-    //           fontSize: "12px",
-    //           cursor: "pointer",
-    //         }}
-    //         title="Change Status"
-    //       >
-    //         <option value="active">Active</option>
-    //         <option value="inactive">Inactive</option>
-    //         <option value="terminated">Terminated</option>
-    //       </select> */}
-    //       <button
-    //         onClick={() => handleDeleteEmployee(row.id)}
-    //         style={{
-    //           backgroundColor: "#dc3545",
-    //           color: "#fff",
-    //           border: "none",
-    //           padding: "4px 8px",
-    //           borderRadius: "4px",
-    //           cursor: "pointer",
-    //           fontSize: "12px",
-    //         }}
-    //         title="Delete Employee"
-    //       >
-    //         <FaTrash />
-    //       </button>
-    //     </div>
-    //   ),
-    // },
+    { 
+      key: "status", 
+      title: "Status",
+      render: (row) => (
+        <span 
+          className={`badge ${
+            row.status === 'active' ? 'bg-success' : 
+            row.status === 'inactive' ? 'bg-warning' : 'bg-danger'
+          }`}
+          style={{ 
+            padding: '5px 10px', 
+            borderRadius: '12px',
+            fontSize: '11px',
+            textTransform: 'capitalize'
+          }}
+        >
+          {row.status || 'active'}
+        </span>
+      )
+    },
+    {
+      key: "actions",
+      title: "Actions",
+      render: (row) => (
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button
+            onClick={() => handleEditEmployee(row.id)}
+            style={{
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              padding: "6px 12px",
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "14px",
+              display: "flex",
+              alignItems: "center",
+              gap: "5px"
+            }}
+            title="Edit Employee"
+          >
+            <FaEdit /> Edit
+          </button>
+          <button
+            onClick={() => handleDeleteEmployee(row.id)}
+            style={{
+              backgroundColor: "#dc3545",
+              color: "#fff",
+              border: "none",
+              padding: "6px 12px",
+              borderRadius: "4px",
+              cursor: "pointer",
+              fontSize: "14px",
+              display: "flex",
+              alignItems: "center",
+              gap: "5px"
+            }}
+            title="Delete Employee"
+          >
+            <FaTrash /> Delete
+          </button>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -211,7 +188,6 @@ const EmployeeDetails = () => {
       <Navbar onToggleSidebar={setCollapsed} />
       <div className={`Collapse ${collapsed ? "collapsed" : ""}`}>
 
-        {/* Error Display */}
         {error && (
           <div style={{ 
             backgroundColor: '#f8d7da', 

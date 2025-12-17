@@ -12,7 +12,9 @@ import Attendance from "./Component/Employees/Attendence/Attendence";
 import AdminMonthlyAttendance from "./Component/Admin/AdminAttendence/MonthlyAttendence";
 import Dashboard from "./Component/Admin/Dashboard/Dashboard";
 import EmployeeMonthlyAttendence from "./Component/Employees/Attendence/MonthlyAttendence";
-import PDF from "./Component/Employees/PDF"
+import PDF from "./Component/Employees/PDF";
+import Profile from "./Component/Employees/Profile/Profile"
+import ResetPassword from "./Component/Userlogin/ResetPassword"
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Login />} />  {/* Login route */}
+             <Route path="/reset-password" element={<ResetPassword />} /> 
             <Route path="/admin-login" element={<AdminLogin />} />  {/* Admin login route */}
              <Route path="/employeeregister" element={<EmployeeRegistration />} /> 
               <Route path="/employeelist" element={<ViewEmployeeDetails />} /> 
@@ -32,6 +35,8 @@ function App() {
                <Route path="/monthlyattendance" element={<EmployeeMonthlyAttendence />} /> 
                 <Route path="/admindashboard" element={<Dashboard />} /> 
                  <Route path="/pdf" element={<PDF />} /> 
+                 <Route path="/profile" element={<Profile />} /> 
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>
