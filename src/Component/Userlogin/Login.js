@@ -94,7 +94,7 @@ const Login = () => {
 
       setForgotMessage("OTP has been sent to your email. Redirecting to reset page...");
       
-      // Store email temporarily for verification
+      // Auto-reflect email to reset page
       localStorage.setItem('resetEmail', forgotEmail);
       
       // Redirect to reset password page after 2 seconds
@@ -165,7 +165,13 @@ const Login = () => {
 
             <div className="forgot-password-link">
               <button 
-                onClick={() => setShowForgotPassword(true)}
+                onClick={() => {
+                  setShowForgotPassword(true);
+                  // Auto-fill forgot email with login email if available
+                  if (email) {
+                    setForgotEmail(email);
+                  }
+                }}
                 className="forgot-password-btn"
                 disabled={loading}
               >

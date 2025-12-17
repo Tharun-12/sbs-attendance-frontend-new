@@ -297,13 +297,13 @@ const Register = () => {
                 {error && <Alert variant="danger">{error}</Alert>}
                 {success && <Alert variant="success">{success}</Alert>}
                 
-                {generatedPassword && !isEditMode && (
+                {/* {generatedPassword && !isEditMode && (
                   <Alert variant="info">
                     <strong>Auto-generated Password:</strong> {generatedPassword}
                     <br />
                     <small>Password format: FirstWord@123 (e.g., Tharun@123)</small>
                   </Alert>
-                )}
+                )} */}
 
                 {isEditMode && generatedPassword && formData.updatePassword === "true" && (
                   <Alert variant="warning">

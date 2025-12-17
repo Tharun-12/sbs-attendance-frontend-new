@@ -404,3 +404,194 @@
 .back-to-login-container {
   margin-top: 20px;
 }
+
+/* Login.css - Additional styles */
+
+/* Login Options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.remember-me,
+.do-not-disturb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.remember-me input[type="checkbox"],
+.do-not-disturb input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.dnd-tooltip {
+  cursor: help;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Email Verification Section */
+.email-verification-section {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.verification-text {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* OTP Container */
+.otp-container {
+  margin-bottom: 25px;
+}
+
+.otp-label {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #555;
+  font-size: 14px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.otp-input {
+  width: 40px !important;
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.otp-input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.otp-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.verify-otp-btn {
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.verify-otp-btn:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.verify-otp-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.resend-btn {
+  padding: 10px 20px;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.resend-btn:hover:not(:disabled) {
+  background: #0b7dda;
+}
+
+.resend-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.otp-verified {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.verified-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Reset Email Info */
+.reset-email-info {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Forgot Password Buttons */
+.forgot-password-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.forgot-password-buttons .userlogin-btn {
+  flex: 1;
+}
+
+.back-to-login-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-to-login-btn {
+  background: transparent;
+  color: #666;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 5px 10px;
+}
+
+.back-to-login-btn:hover:not(:disabled) {
+  color: #333;
+}
+
+.back-to-login-btn:disabled {
+  color: #999;
+  cursor: not-allowed;
+}

@@ -20,7 +20,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get email from localStorage
+    // Get email from localStorage (auto-reflected from forgot password)
     const savedEmail = localStorage.getItem('resetEmail');
     if (!savedEmail) {
       navigate("/");
@@ -90,7 +90,7 @@ const ResetPassword = () => {
         throw new Error(data.error || "Invalid OTP");
       }
 
-      setMessage("OTP verified successfully!");
+      setMessage(""); // Clear the message after successful verification
       setOtpVerified(true);
       
     } catch (err) {
@@ -211,103 +211,112 @@ const ResetPassword = () => {
           Enter OTP sent to: <strong>{email}</strong>
         </p>
         
-        {message && (
+        {/* Show message only when there's an error or during password reset */}
+        {message && !otpVerified && (
           <p className={message.includes("successfully") ? "userlogin-success" : "userlogin-error"}>
             {message}
           </p>
         )}
 
         <form onSubmit={handleSubmit} className="userlogin-form">
-          {/* OTP Input */}
-          <div className="otp-container">
-            <p className="otp-label">Enter 6-digit OTP</p>
-            <div className="otp-inputs">
-              {otp.map((digit, index) => (
+          {/* OTP Input - Completely hidden after verification */}
+          {!otpVerified ? (
+            <>
+              <div className="otp-container">
+                <p className="otp-label">Enter 6-digit OTP</p>
+                <div className="otp-inputs">
+                  {otp.map((digit, index) => (
+                    <input
+                      key={index}
+                      id={`otp-${index}`}
+                      type="text"
+                      maxLength="1"
+                      value={digit}
+                      onChange={(e) => handleOtpChange(index, e.target.value)}
+                      onKeyDown={(e) => handleKeyDown(index, e)}
+                      className="otp-input"
+                      disabled={loading}
+                    />
+                  ))}
+                </div>
+                
+                <div className="otp-actions">
+                  <button
+                    type="button"
+                    onClick={verifyOtp}
+                    className="verify-otp-btn"
+                    disabled={loading || otp.join('').length !== 6}
+                  >
+                    Verify OTP
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={handleResendOtp}
+                    className="resend-btn"
+                    disabled={resendDisabled || loading}
+                  >
+                    {resendDisabled ? `Resend OTP in ${resendTimer}s` : 'Resend OTP'}
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : null}
+
+          {/* Password fields - Only show after OTP verification */}
+          {otpVerified && (
+            <>
+              {/* Success indicator (optional, minimal) */}
+              {/* <div className="otp-verified-indicator">
+                <span className="verified-badge">✓ OTP Verified</span>
+              </div> */}
+
+              {/* New Password */}
+              <div className="userlogin-password-field">
                 <input
-                  key={index}
-                  id={`otp-${index}`}
-                  type="text"
-                  maxLength="1"
-                  value={digit}
-                  onChange={(e) => handleOtpChange(index, e.target.value)}
-                  onKeyDown={(e) => handleKeyDown(index, e)}
-                  className="otp-input"
-                  disabled={loading || otpVerified}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="New Password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                  className="userlogin-input"
+                  disabled={loading}
+                  autoFocus
                 />
-              ))}
-            </div>
-            
-            <div className="otp-actions">
-              {!otpVerified && (
                 <button
                   type="button"
-                  onClick={verifyOtp}
-                  className="verify-otp-btn"
-                  disabled={loading || otp.join('').length !== 6}
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="userlogin-toggle-password"
+                  disabled={loading}
                 >
-                  Verify OTP
+                  {showPassword ? "🙈" : "👁️"}
                 </button>
-              )}
-              
-              <button
-                type="button"
-                onClick={handleResendOtp}
-                className="resend-btn"
-                disabled={resendDisabled || loading}
-              >
-                {resendDisabled ? `Resend OTP in ${resendTimer}s` : 'Resend OTP'}
-              </button>
-            </div>
-            
-            {otpVerified && (
-              <div className="otp-verified">
-                <span className="verified-badge">✓ OTP Verified</span>
               </div>
-            )}
-          </div>
 
-          {/* New Password */}
-          <div className="userlogin-password-field">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="New Password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              required
-              className="userlogin-input"
-              disabled={loading || !otpVerified}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="userlogin-toggle-password"
-              disabled={loading || !otpVerified}
-            >
-              {showPassword ? "🙈" : "👁️"}
-            </button>
-          </div>
+              {/* Confirm Password */}
+              <div className="userlogin-password-field">
+                <input
+                  type="password"
+                  placeholder="Confirm New Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="userlogin-input"
+                  disabled={loading}
+                />
+              </div>
 
-          {/* Confirm Password */}
-          <div className="userlogin-password-field">
-            <input
-              type="password"
-              placeholder="Confirm New Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="userlogin-input"
-              disabled={loading || !otpVerified}
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className="userlogin-btn"
-            disabled={loading || !otpVerified}
-          >
-            {loading ? "Resetting Password..." : "Reset Password"}
-          </button>
+              <button 
+                type="submit" 
+                className="userlogin-btn"
+                disabled={loading}
+              >
+                {loading ? "Resetting Password..." : "Reset Password"}
+              </button>
+            </>
+          )}
           
+          {/* Show back button during OTP entry and password reset */}
           <div className="back-to-login-container">
             <button 
               type="button"
