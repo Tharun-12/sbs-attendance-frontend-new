@@ -15,6 +15,7 @@ import EmployeeMonthlyAttendence from "./Component/Employees/Attendence/MonthlyA
 import PDF from "./Component/Employees/PDF";
 import Profile from "./Component/Employees/Profile/Profile"
 import ResetPassword from "./Component/Userlogin/ResetPassword"
+import PDF2 from "./Component/Employees/PDF2"
 
 const queryClient = new QueryClient();
 
@@ -36,7 +37,7 @@ function App() {
                 <Route path="/admindashboard" element={<Dashboard />} /> 
                  <Route path="/pdf" element={<PDF />} /> 
                  <Route path="/profile" element={<Profile />} /> 
-
+                   <Route path="/pdf2" element={<PDF2 />} /> 
           </Routes>
         </BrowserRouter>
       </AuthProvider>

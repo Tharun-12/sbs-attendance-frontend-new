@@ -106,9 +106,9 @@ const handleLogin = async (e) => {
                 </button>
               </div>
             </div>
-            <div className="d-flex justify-content-end mb-2">
+            {/* <div className="d-flex justify-content-end mb-2">
               <a href="/forgot" className="login-forgot-password"> Forgot Password</a>
-            </div>
+            </div> */}
             <button className="login-btn login-btn-login">Login</button>
           </form>
         </div>
