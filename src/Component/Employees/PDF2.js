@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, PDFViewer, Image } from '@react-pdf/renderer';
-import logo from "../Assets/sbslogo.png";
+import logo from "../Assets/Final-logo-SBS.png";
 
 // Create styles
 const styles = StyleSheet.create({

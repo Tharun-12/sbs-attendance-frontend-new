@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import "./AdminSidebar.css";
-import logo from "../../Assets/sbslogo.png";
+import logo from "../../Assets/Final-logo-SBS.png";
 import { useAuth } from "./../../Authcontext/Authcontext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";

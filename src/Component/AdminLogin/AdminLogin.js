@@ -4,7 +4,7 @@ import './AdminLogin.css';
 
 import { useAuth } from "../Authcontext/Authcontext";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import logo from "../Assets/sbslogo.png";
+import logo from "../Assets/Final-logo-SBS.png";
 
 // ✅ If you are using Firebase Authentication
 import { signInWithEmailAndPassword } from "firebase/auth";

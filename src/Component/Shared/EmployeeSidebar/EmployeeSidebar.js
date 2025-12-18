@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Authcontext/Authcontext";
 import { FaUserCircle } from "react-icons/fa";
 import "./EmployeeSidebar.css";
-import logo from "../../Assets/sbslogo.png";
+import logo from "../../Assets/Final-logo-SBS.png";
 
 const EmployeeDashboard = () => {
   const { user, logout } = useAuth();

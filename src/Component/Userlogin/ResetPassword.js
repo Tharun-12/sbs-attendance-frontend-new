@@ -1,7 +1,7 @@
 // src/components/ResetPassword.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import landNestLogo from "../Assets/sbslogo.png";
+import landNestLogo from "../Assets/Final-logo-SBS.png";
 import "./Login.css"; // Reuse the same CSS
 import { baseUrl } from "../../Apiurls";
 
